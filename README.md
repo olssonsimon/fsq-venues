@@ -17,11 +17,48 @@ config = {
 
 var fsq = require('fsq-venues').client(config)
 
-resource = 'photos'
-venueId  = 12345678asdfghj
-params   = {limit: 100}
-
 fsq.get(resource, venueId, params, callback)
+```
+
+####Examples
+
+#####Get Venues
+```
+params = {
+  ll:         '40.7,-74', 
+  radius:     10000,
+  categoryId: '4d4b7105d754a06374d81259',
+  limit:      10,
+  intent:     'browse'
+};
+
+fsq.get('search', params, function(err, res) {
+  if (!err)
+    // Do something
+});
+```
+
+#####Get Photos
+```
+venueId = "4ba9c430f964a52053373ae3";
+params  = {
+  limit: 100,
+}
+
+fsq.get('photos', venueId, params, function(err, res){
+  if (!err)
+    // Do something
+}
+```
+
+#####Get Hours
+```
+venueId = "5243025411d2d9eddc11ec70";
+
+fsq.get('hours', venueId, function(err, res){
+  if (!err)
+    // Do something
+}
 ```
 
 ####Documentation
