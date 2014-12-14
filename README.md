@@ -61,6 +61,16 @@ fsq.get('hours', venueId, function(err, res){
 }
 ```
 
+#####Get Venue
+```
+venueId = "5243025411d2d9eddc11ec70";
+
+fsq.get('venue', venueId, function(err, res){
+  if (!err)
+    // Do something
+}
+```
+
 ####Documentation
 For further api documentation please see: https://developer.foursquare.com/docs/venues/venues
 
