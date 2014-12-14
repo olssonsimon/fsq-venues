@@ -1,8 +1,8 @@
 var assert = require('chai').assert;
 
 var fsq = require('.././lib/fsq-venues').client({
-  "client_id":     "YOUR CLIENT ID",
-  "client_secret": "YOUR CLIENT SECRET",
+  "client_id":     "YQ4OHJNZUBADNAL5NSQOAIMZO3E2NFM1STA3RFKLSDKPREMM",
+  "client_secret": "XHBBRJG2PEHHTA4BHWX3TRXZYEYDNHPKA0EZH2KIHZCQETFP",
   "v":             "20141201",
   "m":             "foursquare"
 });
@@ -10,16 +10,17 @@ var fsq = require('.././lib/fsq-venues').client({
 describe('Foursquare Api', function() {
   this.timeout(5000);
 
-  describe('venues#search', function(){
-    it('gets venues based off of the given params', function(done){
-      var params = {
+  describe('get venues', function() {
+    it ('gets fitting venues', function(done) {
+      params = {
         ll:         '40.7,-74', 
-        radius:     1,
+        radius:     10000,
         categoryId: '4d4b7105d754a06374d81259',
         limit:      10,
         intent:     'browse'
       };
-      fsq.search(params, function(err, res){
+
+      fsq.get('search', params, function(err, res){
         assert.isNull(err);
         assert.isObject(res);
         done();
@@ -27,10 +28,38 @@ describe('Foursquare Api', function() {
     });
   });
 
-  describe('venues#venue', function(){
+  describe('get photos', function() {
+    it ('gets photos for a venue', function(done) {
+      venueId = "4ba9c430f964a52053373ae3";
+
+      fsq.get('photos', venueId, function(err, res){
+        assert.isNull(err);
+        assert.isObject(res);
+        done();
+      });
+    });
+  });
+
+  describe('get tips', function(){
+    it('gets tips for a venue', function(done){
+      venueId = "4ba9c430f964a52053373ae3";
+      params = {
+        limit: 100
+      };
+
+      fsq.get('tips', venueId, params, function(err, res){
+        assert.isNull(err);
+        assert.isObject(res);
+        done();
+      });
+    });
+  });
+
+  describe('get a venue', function(){
     it('gets a venue given a venueId', function(done){
-      var venueId = "4ba9c430f964a52053373ae3";
-      fsq.venue(venueId, function(err, res){
+      venueId = "4ba9c430f964a52053373ae3";
+      
+      fsq.get('venue', venueId, function(err, res){
         assert.isNull(err);
         assert.isObject(res);
         done();
@@ -38,32 +67,11 @@ describe('Foursquare Api', function() {
     });
   });
 
-  describe('venues#photos', function(){
-    it('gets photos for a venue given a venueId', function(done){
-      var venueId = "4ba9c430f964a52053373ae3";
-      fsq.photos(venueId, function(err, res){
-        assert.isNull(err);
-        assert.isObject(res);
-        done();
-      });
-    });
-  });
-
-  describe('venues#tips', function(){
-    it('gets tips for a venue given a venueId', function(done){
-      var venueId = "4ba9c430f964a52053373ae3";
-      fsq.tips(venueId, function(err, res){
-        assert.isNull(err);
-        assert.isObject(res);
-        done();
-      });
-    });
-  });
-
-  describe('venues#hours', function(){
+  describe('get hours', function(){
     it('gets hours for a venue given a venueId', function(done){
-      var venueId = "4ba9c430f964a52053373ae3";
-      fsq.hours(venueId, function(err, res){
+      venueId = "5243025411d2d9eddc11ec70"; // Butcher's Market
+
+      fsq.get('hours', venueId, function(err, res){
         assert.isNull(err);
         assert.isObject(res);
         done();
@@ -71,10 +79,11 @@ describe('Foursquare Api', function() {
     });
   });
 
-  describe('venues#menu', function(){
+  describe('get menu', function(){
     it('gets the menu for a venue given a venueId', function(done){
-      var venueId = "4ba9c430f964a52053373ae3";
-      fsq.menu(venueId, function(err, res){
+      venueId = "4ba9c430f964a52053373ae3";
+
+      fsq.get('menu', venueId, function(err, res){
         assert.isNull(err);
         assert.isObject(res);
         done();
@@ -82,10 +91,11 @@ describe('Foursquare Api', function() {
     });
   });
 
-  describe('venues#events', function(){
+  describe('get events', function(){
     it('gets the events for a venue given a venueId', function(done){
-      var venueId = "4ba9c430f964a52053373ae3";
-      fsq.events(venueId, function(err, res){
+      venueId = "4ba9c430f964a52053373ae3";
+
+      fsq.get('events', venueId, function(err, res){
         assert.isNull(err);
         assert.isObject(res);
         done();
@@ -93,10 +103,11 @@ describe('Foursquare Api', function() {
     });
   });
 
-  describe('venues#likes', function(){
+  describe('get likes', function(){
     it('gets the likes for a venue given a venueId', function(done){
-      var venueId = "4ba9c430f964a52053373ae3";
-      fsq.likes(venueId, function(err, res){
+      venueId = "4ba9c430f964a52053373ae3";
+
+      fsq.get('likes', venueId, function(err, res){
         assert.isNull(err);
         assert.isObject(res);
         done();
@@ -104,10 +115,11 @@ describe('Foursquare Api', function() {
     });
   });
 
-  describe('venues#links', function(){
+  describe('get links', function(){
     it('gets the links for a venue given a venueId', function(done){
-      var venueId = "4ba9c430f964a52053373ae3";
-      fsq.links(venueId, function(err, res){
+      venueId = "4ba9c430f964a52053373ae3";
+
+      fsq.get('links', venueId, function(err, res){
         assert.isNull(err);
         assert.isObject(res);
         done();

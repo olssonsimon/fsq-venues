@@ -13,17 +13,28 @@
     "type": "git",
     "url": "https://github.com/olssonsimon/fsq-venues"
   },
-  "main": "index.js",
+  "main": "./lib/4sq-venues.js",
   "scripts": {
     "test": "mocha tests"
   },
   "bugs": {
     "url": "https://github.com/olssonsimon/fsq-venues/issues"
   },
+  "_id": "fsq-venues@0.0.1",
+  "_from": "fsq-venues@",
+  "_npmVersion": "1.4.28",
+  "_npmUser": {
+    "name": "olssonsimon",
+    "email": "olssonsim@gmail.com"
+  },
   "author": "Simon Olsson",
   "license": "MIT",
   "dependencies":  {
     "unirest": "^0.3.0",
     "querystring": "^0.2.0"
+  },
+  "testDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.0.1"
   }
 }
