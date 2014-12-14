@@ -1,8 +1,9 @@
 var assert = require('chai').assert;
+var keys   = require('./keys'); 
 
 var fsq = require('.././lib/fsq-venues').client({
-  "client_id":     "YQ4OHJNZUBADNAL5NSQOAIMZO3E2NFM1STA3RFKLSDKPREMM",
-  "client_secret": "XHBBRJG2PEHHTA4BHWX3TRXZYEYDNHPKA0EZH2KIHZCQETFP",
+  "client_id":     keys.client_id,
+  "client_secret": keys.client_secret,
   "v":             "20141201",
   "m":             "foursquare"
 });
